@@ -1,0 +1,102 @@
+﻿@using wimfortonMVC.Models;
+
+
+@{
+    ViewData["Title"] = "Threejs";
+}
+
+<div id="ts-example">
+    <br />
+    <button type="button" class="btn btn-primary btn-md" onclick="TSButton()">
+        Click Me
+    </button>
+</div>
+<div>
+    <p id="ts-example-2">jQuery version is:</p>
+</div>
+
+
+<div class="text-center dflex flex-row" style="">
+    @{
+        var data = ViewBag.Message;
+
+
+    }
+
+    <div class="incrementers">
+        <a class="reset" asp-area="" asp-controller="Threejs"
+           asp-action="Index">
+            Reset
+        </a>
+        <button type="button" onclick="Reset()">ResetAjax</button>
+        <a class="edit" style="" asp-area="" asp-controller="Threejs"
+           asp-action="xIncr" asp-route-x="@data.x" asp-route-y="@data.y" asp-route-z="@data.z">
+            Increment x
+        </a>
+        <a class="edit" style="" asp-area="" asp-controller="Threejs"
+           asp-action="xDecr" asp-route-x="@data.x" asp-route-y="@data.y" asp-route-z="@data.z">
+            Decrement x
+        </a>
+
+        <a class="edit" style="" asp-area="" asp-controller="Threejs"
+           asp-action="yIncr" asp-route-x="@data.x" asp-route-y="@data.y" asp-route-z="@data.z">
+            Increment y
+        </a>
+        <a class="edit" style="" asp-area="" asp-controller="Threejs"
+           asp-action="yDecr" asp-route-x="@data.x" asp-route-y="@data.y" asp-route-z="@data.z">
+            Decrement y
+        </a>
+
+        <a class="edit" style="" asp-area="" asp-controller="Threejs"
+           asp-action="zIncr" asp-route-x="@data.x" asp-route-y="@data.y" asp-route-z="@data.z">
+            Increment z
+        </a>
+        <a class="edit" style="" asp-area="" asp-controller="Threejs"
+           asp-action="zDecr" asp-route-x="@data.x" asp-route-y="@data.y" asp-route-z="@data.z">
+            Decrement z
+        </a>
+
+    </div>
+
+    <div class="dims">
+        x: @data.x
+        y: @data.y @Html.Raw("&nbsp &nbsp")
+        z: @data.z
+    </div>
+    <input type="hidden" id="myXdata" value="@data.x" />
+    <input type="hidden" id="myYdata" value="@data.y" />
+    <input type="hidden" id="myZdata" value="@data.z" />
+
+    <script src="~/js/three.js"></script>
+    <script type="module" src="~/js/ThreejsScene.js"></script>
+    
+    @* <script>const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const geometry = new THREE.BoxGeometry(@data.x, @data.y, @data.z);
+    const material = new THREE.MeshBasicMaterial({ color: 0x20b2aa });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    const edges = new THREE.EdgesGeometry(geometry);
+    const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
+    scene.add(line);
+
+    camera.position.z = 5;
+    camera.position.y = -1;
+
+
+    function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    line.rotation.x += 0.01;
+    line.rotation.y += 0.01;
+    renderer.render(scene, camera);
+    }
+    animate();</script> *@
+</div>

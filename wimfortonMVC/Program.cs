@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +15,27 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+//--------------------------------punt ipv komma
+var defaultDateCulture = "en-US";
+var ci = new CultureInfo(defaultDateCulture);
+ci.NumberFormat.NumberDecimalSeparator = ".";
+ci.NumberFormat.CurrencyDecimalSeparator = ".";
+
+// Configure the Localization middleware
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(ci),
+    SupportedCultures = new List<CultureInfo>
+    {
+        ci,
+    },
+    SupportedUICultures = new List<CultureInfo>
+    {
+        ci,
+    }
+});
+//-----------------------------------punt ipv komma
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

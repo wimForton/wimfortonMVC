@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "@types/jquery": "3.5.30",
+    "parcel-bundler": "^1.6.1"
+  },
+  "dependencies": {
+    "three": "^0.167.1"
+  },
+  "keywords": [
+    "webgl",
+    "typescript",
+    "web",
+    "three.js"
+  ]
+}
